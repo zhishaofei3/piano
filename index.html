@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="anjian"></div>
+<script src="js/jquery.min.js"></script>
+<script>
+  var changMingArr = ['do', 're', 'mi', 'fa', 'sol', 'la', 'si', 'do', 're']
+  var str = ''
+  var $anjian = $('#anjian')
+  //preload
+  for (var i = 1; i <= 9; i++) {
+    var audio = new Audio()
+    audio.src = 'sounds/' + i + '.mp3'
+  }
+  window.addEventListener('keydown', function (e) {
+    if (e.keyCode >= 49 && e.keyCode <= 57) {
+      var num = e.keyCode - 48
+      var audio = new Audio()
+      audio.src = 'sounds/' + num + '.mp3'
+      audio.play()
+      str += changMingArr[num - 1] + ' '
+      $anjian.html(str)
+    }
+  })
+</script>
+</body>
+</html>
